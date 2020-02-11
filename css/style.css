@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+  
+    margin: 0 auto;
+}
+
+header {
+    border-bottom: #000;
+    font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+}
+main {
+    background-color: #000;
+    height: 600px;
+    width: 600px;
+}
+ul {
+    display: flex;
+    list-style-type: none;
+    height: 2
+}
+button {
+    font-size: 14px;
+    height: 30px;
+    width: 80px;
+}
