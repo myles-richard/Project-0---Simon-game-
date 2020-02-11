@@ -1,6 +1,7 @@
+
 * {
     box-sizing: border-box;
-  
+    border: 1px solid red;
     margin: 0 auto;
 }
 
@@ -11,7 +12,6 @@ header {
     text-align: center;
 }
 main {
-    background-color: #000;
     height: 600px;
     width: 600px;
 }
@@ -20,8 +20,55 @@ ul {
     list-style-type: none;
     height: 2
 }
+#start {
+    display: flex;
+}
+
+div, p {
+    display: flex;
+}
+
 button {
     font-size: 14px;
     height: 30px;
     width: 80px;
+}
+
+/* boxes */
+#outside-box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+    height: 500px;
+    width: 500px;
+}
+#topleft {
+    height: 50%;
+    width: 50%;
+    background-color: rgba(155, 17, 17, 0.968);
+}
+#topright {
+    height: 50%;
+    width: 50%;
+    background-color: rgb(32, 123, 32);
+}
+#bottomleft {
+    height: 50%;
+    width: 50%;
+    background-color: rgb(34, 34, 223);
+}
+#bottomright {
+    height: 50%;
+    width: 50%;
+    background-color: rgba(235, 235, 83, 0.934);
+}
+
+#inside-box {
+    position: absolute;
+    background-color: grey;
+    height: 50%;
+    width: 50%;
+    left: 50%;
+    margin-left: -25%;
 }
