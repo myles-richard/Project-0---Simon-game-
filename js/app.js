@@ -20,14 +20,13 @@ use clearInterval() method to prevent the function from running.
 */ 
 // let id = setInterval(lightUpBox, 1000)
 //need to have computer turn and a person turn
-
-let playerTurn = false;
+let computerTurn;
+let playerTurn;
 let score = 0;
 //keep track of turns 
 let turn;
 //check array after each input to see if correct
 //number of flashes = turn so it can stop on computer turn. 
-let numOfFlashes;
 // need to have an empty array to fill with random numbers
 // need to have an array to match with computer to make sure i did the right combo
 let flashOrder = [];
@@ -49,11 +48,10 @@ strtBtn.addEventListener('click', (event) => {
 });
 
 function flashBoxes(arr, roundLimiter, delayMillis) {
-    console.log("hello")
-    var i = 0;
+    let i = 0;
     return function flasher() {
         if (i < roundLimiter) {
-
+            
             if (arr[i] === 1) {
                 redBox.style.opacity=('0');
                 setTimeout(function() {
@@ -88,15 +86,55 @@ function flashBoxes(arr, roundLimiter, delayMillis) {
 }
 
 // After the "display round", swap "watch" with "play"
-// During "play", record user clicks into a new array
+
+// During "play", record user clicks into a new array and make color flash
+redBox.addEventListener('click', (event)=> {
+    playerArr.push(1)
+    redBox.style.opacity=('0');
+    setTimeout(() => {
+        clearColor();
+    }, 200);
+}) 
+greenBox.addEventListener('click', (event)=> {
+    playerArr.push(2)
+    greenBox.style.opacity=('0');
+    setTimeout(() => {
+        clearColor();
+    }, 200);
+})
+blueBox.addEventListener('click', (event) => {
+    playerArr.push(3)
+    blueBox.style.opacity=('0');
+    setTimeout(() => {
+        clearColor();
+    }, 200);
+})
+yellowBox.addEventListener('click', (event) => {
+    playerArr.push(4)
+    yellowBox.style.opacity=('0');
+    setTimeout(() => {
+        clearColor();
+    }, 200);
+})
+// clear color and change back after player presses on them
+function clearColor() {
+    redBox.style.opacity=('1');
+    greenBox.style.opacity=('1');
+    blueBox.style.opacity=('1');
+    yellowBox.style.opacity=('1');
+}
 // When the player's array is the same length as the turn number, compare player array to turn number of elements in the flashOrder
 // If they match, clear the player array, increase the turn, swap "play" with "watch"
+const checkForMatch = () => {
+
+}
 // If they don't match, game over.
 
 
 function start() {
     // turn switches to one so you can check the amount of flashes
-    turn = 4;
+    turn = 5;
+    computerTurn = true;
     // need to clear game and colors 
     for (let i = 0; i < 20; i++) {
         // need to generate a number between 1 & 4 and count up to 20
@@ -104,11 +142,12 @@ function start() {
     }
     console.log(flashOrder)
     //check computer turn 
- 
-    
-    // needs to light 1 box more than score
 }
+
 
 start();
 
 // how to edit att
+
+
+console.log(playerArr)
