@@ -46,22 +46,26 @@ button {
 #topleft {
     height: 50%;
     width: 50%;
-    background-color: rgba(155, 17, 17, 0.968);
+    background-color: #C31B01;
+}
+.democlass {
+    background-color: goldenrod;
+    opacity: 0;
 }
 #topright {
     height: 50%;
     width: 50%;
-    background-color: rgb(32, 123, 32);
+    background-color: #2CBD02;
 }
 #bottomleft {
     height: 50%;
     width: 50%;
-    background-color: rgb(34, 34, 223);
+    background-color: #0458DA;
 }
 #bottomright {
     height: 50%;
     width: 50%;
-    background-color: rgba(235, 235, 83, 0.934);
+    background-color: #DEB51F;
 }
 
 #inside-box {
@@ -71,4 +75,5 @@ button {
     width: 50%;
     left: 50%;
     margin-left: -25%;
+    align-items: center;
 }
