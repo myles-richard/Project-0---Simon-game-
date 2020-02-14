@@ -1,8 +1,10 @@
 
 * {
     box-sizing: border-box;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     margin: 0 auto;
+    background-color: #000;
+    color: white;
 }
 
 header {
@@ -24,6 +26,7 @@ ul {
 }
 #start {
     display: flex;
+    padding-top: 30px;
 }
 
 div, p {
@@ -33,6 +36,12 @@ div, p {
 }
 
 button {
+    font-size: 14px;
+    height: 30px;
+    width: 80px;
+}
+
+#reset {
     font-size: 14px;
     height: 30px;
     width: 80px;
@@ -79,7 +88,7 @@ button {
 
 #inside-box {
     position: absolute;
-    background-color: grey;
+    background-color: #000;
     height: 50%;
     width: 50%;
     left: 50%;

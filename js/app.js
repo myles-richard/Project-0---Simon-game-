@@ -1,33 +1,10 @@
 console.log('hello there')
 
-
-
-//keep track of high score
-//change speeds
-//set watch to false and appears when its time to watch
-// middle says play when its personOnes turn 
-
-// need a varible that checks if number of flashes = score
- 
-/* setTimeout() calls a function or evaulates an expression 
-after a specified number of milliseconds.
-the function is only executed once, if you need to repeat 
-execution use the setInterval() method.
-1000 = 1second 
-
-use clearInterval() method to prevent the function from running.
-
-*/ 
-// let id = setInterval(lightUpBox, 1000)
-//need to have computer turn and a person turn
-let computerTurn;
-let playerTurn;
 let score = 0;
+//speed of game
 let speed = 1000;
 //keep track of turns 
 let turn;
-//check array after each input to see if correct
-//number of flashes = turn so it can stop on computer turn. 
 // need to have an empty array to fill with random numbers
 // need to have an array to match with computer to make sure i did the right combo
 let flashOrder = [];
@@ -39,25 +16,38 @@ const redBox = document.getElementById('topleft');
 const greenBox = document.getElementById('topright');
 const blueBox = document.getElementById('bottomleft');
 const yellowBox = document.getElementById('bottomright');
-const turnCounter = document.getElementById('countTurn');
+//counter for turns
+const turnCounter = document.getElementById('count-turn');
+//keep score variable
 const keepScore = document.getElementById('score');
+//keep track of high score
 const hightScore = document.getElementById('highscore')
 // start function
 let strtBtn = document.getElementById('strt');
 let slwBtn = document.getElementById('slow');
-// slwBtn.addEventListener('click', (event) => {
-//     speed = speed * .5;
-// })
+let rstBtn = document.getElementById('reset')
+slwBtn.addEventListener('click', (event) => {
+    return speed * 10;
+})
 strtBtn.addEventListener('click', (event) => {
     // i looping through flash order array
     let f = flashBoxes(flashOrder, turn, speed);
     f();
 });
+//reset button
+rstBtn.addEventListener('click', (event) => {
+    resetGame();
+});
 
+//make boxes flash
 function flashBoxes(arr, roundLimiter, delayMillis) {
     let i = 0;
     return function flasher() {
+       // After the "display round", swap "watch" with "play" 
+            document.getElementById('round').innerHTML = 'PLAY'
+            //number of flashes = turn so it can stop on computer turn.   
         if (i < roundLimiter) {
+            
             
             if (arr[i] === 1) {
                 redBox.style.opacity=('0');
@@ -86,15 +76,16 @@ function flashBoxes(arr, roundLimiter, delayMillis) {
                     yellowBox.style.opacity=('1');
                 }, 500);
             }
-            console.log(arr[i++]);
+            arr[i++];
             setTimeout(flasher, delayMillis);
         }
     }   
 }
 
-// After the "display round", swap "watch" with "play"
 
-// During "play", record user clicks into a new array and make color flash
+
+// During "play", record user clicks into a new array and make color flash back to normal with clearcolor. 
+// check for match after every click
 redBox.addEventListener('click', (event) => {
     playerArr.push(1)
     redBox.style.opacity=('0');
@@ -104,6 +95,7 @@ redBox.addEventListener('click', (event) => {
     checkForMatch();
 }) 
 greenBox.addEventListener('click', (event) => {
+    //push number to array
     playerArr.push(2)
     greenBox.style.opacity=('0');
     setTimeout(() => {
@@ -112,6 +104,7 @@ greenBox.addEventListener('click', (event) => {
     checkForMatch();
 })
 blueBox.addEventListener('click', (event) => {
+    //push number to array
     playerArr.push(3)
     blueBox.style.opacity=('0');
     setTimeout(() => {
@@ -120,6 +113,7 @@ blueBox.addEventListener('click', (event) => {
     checkForMatch();
 })
 yellowBox.addEventListener('click', (event) => {
+    //push number to array
     playerArr.push(4)
     yellowBox.style.opacity=('0');
     setTimeout(() => {
@@ -137,18 +131,23 @@ function clearColor() {
 // When the player's array is the same length as the turn number, compare player array to turn number of elements in the flashOrder
 // If they match, clear the player array, increase the turn, swap "play" with "watch"
 const checkForMatch = () => {
-    console.log(playerArr.length, flashOrder.length);
+    
     //compare arrays 
     // If they don't match, game over.
+  //check array after each input to see if correct
+    if ((playerArr[playerArr.length -1] == flashOrder[playerArr.length -1]) && (playerArr.length === 20)) {
+        document.getElementById('round').innerHTML = 'YOU WIN!'
+    }
     if (playerArr[playerArr.length -1] !== flashOrder[playerArr.length -1]) {
         document.getElementById('round').innerHTML = 'GAME OVER!'
         finallScore = score
         hightScore.innerHTML = 'High Score: ' + finallScore
-        clearInterval(flashInt)
         console.log('game over')
     } else if(playerArr.length === turn){
         turn++
-        keepScore.innerHTML = 'Score: '+ score++;
+        turnCounter.innerHTML = turn
+        score++
+        keepScore.innerHTML = 'Score: '+ score;
         playerArr = [];
         
         document.getElementById('round').innerHTML = 'WATCH'
@@ -157,9 +156,21 @@ const checkForMatch = () => {
         console.log('you won the round')
     }
 }
+//Reset game
+function resetGame() {
+    playerArr = [];
+    flashOrder = [];
+    score = 0;
+    keepScore.innerHTML = 'Score: '+ 0;
+    turn = 1;
+    turnCounter.innerHTML = turn
+    start()
+    document.getElementById('round').innerHTML = 'Press Start!'
+  
+    
+}
 
-
-
+//Start function
 function start() {
     // turn switches to one so you can check the amount of flashes
     turn = 1;
@@ -177,5 +188,3 @@ function start() {
 
 
 start();
-
-console.log(playerArr)
