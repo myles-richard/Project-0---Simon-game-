@@ -38,6 +38,7 @@ const redBox = document.getElementById('topleft')
 const greenBox = document.getElementById('topright')
 const blueBox = document.getElementById('bottomleft')
 const yellowBox = document.getElementById('bottomright')
+const turnCounter = document.getElementById('countTurn');
 // start function
 let strtBtn = document.getElementById('strt');
 
@@ -88,19 +89,21 @@ function flashBoxes(arr, roundLimiter, delayMillis) {
 // After the "display round", swap "watch" with "play"
 
 // During "play", record user clicks into a new array and make color flash
-redBox.addEventListener('click', (event)=> {
+redBox.addEventListener('click', (event) => {
     playerArr.push(1)
     redBox.style.opacity=('0');
     setTimeout(() => {
         clearColor();
     }, 200);
+    checkForMatch();
 }) 
-greenBox.addEventListener('click', (event)=> {
+greenBox.addEventListener('click', (event) => {
     playerArr.push(2)
     greenBox.style.opacity=('0');
     setTimeout(() => {
         clearColor();
     }, 200);
+    checkForMatch();
 })
 blueBox.addEventListener('click', (event) => {
     playerArr.push(3)
@@ -108,6 +111,7 @@ blueBox.addEventListener('click', (event) => {
     setTimeout(() => {
         clearColor();
     }, 200);
+    checkForMatch();
 })
 yellowBox.addEventListener('click', (event) => {
     playerArr.push(4)
@@ -115,6 +119,7 @@ yellowBox.addEventListener('click', (event) => {
     setTimeout(() => {
         clearColor();
     }, 200);
+    checkForMatch();
 })
 // clear color and change back after player presses on them
 function clearColor() {
@@ -126,20 +131,32 @@ function clearColor() {
 // When the player's array is the same length as the turn number, compare player array to turn number of elements in the flashOrder
 // If they match, clear the player array, increase the turn, swap "play" with "watch"
 const checkForMatch = () => {
-
+    console.log(playerArr.length, flashOrder.length);
+    //compare arrays 
+    
+    if (playerArr[playerArr.length -1] !== flashOrder[playerArr.length -1]) {
+        console.log('game over')
+    } else if(playerArr.length === turn){
+        turn++
+        playerArr = [];
+        let f = flashBoxes(flashOrder, turn, 1000);
+        setTimeout(f, 1000);
+        console.log('you won the round')
+    }
 }
 // If they don't match, game over.
 
 
 function start() {
     // turn switches to one so you can check the amount of flashes
-    turn = 5;
+    turn = 1;
     computerTurn = true;
     // need to clear game and colors 
     for (let i = 0; i < 20; i++) {
         // need to generate a number between 1 & 4 and count up to 20
         flashOrder.push(Math.floor(Math.random() * 4) + 1);
     }
+    
     console.log(flashOrder)
     //check computer turn 
 }
