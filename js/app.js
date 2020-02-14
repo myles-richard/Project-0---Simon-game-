@@ -22,13 +22,11 @@ const turnCounter = document.getElementById('count-turn');
 const keepScore = document.getElementById('score');
 //keep track of high score
 const hightScore = document.getElementById('highscore')
-// start function
+// start button
 let strtBtn = document.getElementById('strt');
 let slwBtn = document.getElementById('slow');
 let rstBtn = document.getElementById('reset')
-slwBtn.addEventListener('click', (event) => {
-    slow();
-})
+// start function
 strtBtn.addEventListener('click', (event) => {
     // i looping through flash order array
     let f = flashBoxes(flashOrder, turn, speed);
@@ -144,7 +142,6 @@ const checkForMatch = () => {
         document.getElementById('round').innerHTML = 'GAME OVER!'
         finallScore = score
         hightScore.innerHTML = 'High Score: ' + finallScore
-        console.log('game over')
         // If they match, clear the player array, increase the turn, swap "play" with "watch"
     } else if(playerArr.length === turn){
         turn++
@@ -152,17 +149,14 @@ const checkForMatch = () => {
         score++
         keepScore.innerHTML = 'Score: '+ score;
         playerArr = [];
-        
         document.getElementById('round').innerHTML = 'WATCH'
         let f = flashBoxes(flashOrder, turn, 1000);
+        //run f again wait a second though
         setTimeout(f, 1000);
-        console.log('you won the round')
+       
     }
 }
 
-function slow() {
-    speed * 5;
-}
 //Reset game
 function resetGame() {
     playerArr = [];
@@ -189,7 +183,7 @@ function start() {
         flashOrder.push(Math.floor(Math.random() * 4) + 1);
     }
     
-    console.log(flashOrder)
+    
     //check computer turn 
 }
 
