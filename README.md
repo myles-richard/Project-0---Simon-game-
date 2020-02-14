@@ -20,3 +20,5 @@
   </ol>
   <h2>Unsolved Problems</h2>
   <li>The buttons at the bottom of the page, are supposed to increase the speed of the game from the starting speed to faster or slower speeds, depending on how fast you want to play the game.</li>
+
+![wire frame](https://github.com/myles-richard/Project-0---Simon-game-/blob/master/Assets/IMG_1117.JPG?raw=true "Simon Game")
