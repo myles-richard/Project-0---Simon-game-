@@ -27,7 +27,7 @@ let strtBtn = document.getElementById('strt');
 let slwBtn = document.getElementById('slow');
 let rstBtn = document.getElementById('reset')
 slwBtn.addEventListener('click', (event) => {
-    return speed * 10;
+    slow();
 })
 strtBtn.addEventListener('click', (event) => {
     // i looping through flash order array
@@ -76,6 +76,7 @@ function flashBoxes(arr, roundLimiter, delayMillis) {
                     yellowBox.style.opacity=('1');
                 }, 500);
             }
+            //go to next element in array
             arr[i++];
             setTimeout(flasher, delayMillis);
         }
@@ -138,11 +139,13 @@ const checkForMatch = () => {
     if ((playerArr[playerArr.length -1] == flashOrder[playerArr.length -1]) && (playerArr.length === 20)) {
         document.getElementById('round').innerHTML = 'YOU WIN!'
     }
+    //check array after each input to see if correct
     if (playerArr[playerArr.length -1] !== flashOrder[playerArr.length -1]) {
         document.getElementById('round').innerHTML = 'GAME OVER!'
         finallScore = score
         hightScore.innerHTML = 'High Score: ' + finallScore
         console.log('game over')
+        // If they match, clear the player array, increase the turn, swap "play" with "watch"
     } else if(playerArr.length === turn){
         turn++
         turnCounter.innerHTML = turn
@@ -155,6 +158,10 @@ const checkForMatch = () => {
         setTimeout(f, 1000);
         console.log('you won the round')
     }
+}
+
+function slow() {
+    speed * 5;
 }
 //Reset game
 function resetGame() {
