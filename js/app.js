@@ -23,6 +23,7 @@ use clearInterval() method to prevent the function from running.
 let computerTurn;
 let playerTurn;
 let score = 0;
+let speed = 1000;
 //keep track of turns 
 let turn;
 //check array after each input to see if correct
@@ -34,17 +35,22 @@ let playerArr = [];
 // need a value for my interval 
 let flashInt;
 // need to get all my html box's and give them variables
-const redBox = document.getElementById('topleft')
-const greenBox = document.getElementById('topright')
-const blueBox = document.getElementById('bottomleft')
-const yellowBox = document.getElementById('bottomright')
+const redBox = document.getElementById('topleft');
+const greenBox = document.getElementById('topright');
+const blueBox = document.getElementById('bottomleft');
+const yellowBox = document.getElementById('bottomright');
 const turnCounter = document.getElementById('countTurn');
+const keepScore = document.getElementById('score');
+const hightScore = document.getElementById('highscore')
 // start function
 let strtBtn = document.getElementById('strt');
-
+let slwBtn = document.getElementById('slow');
+// slwBtn.addEventListener('click', (event) => {
+//     speed = speed * .5;
+// })
 strtBtn.addEventListener('click', (event) => {
     // i looping through flash order array
-    let f = flashBoxes(flashOrder, turn, 1000);
+    let f = flashBoxes(flashOrder, turn, speed);
     f();
 });
 
@@ -133,24 +139,32 @@ function clearColor() {
 const checkForMatch = () => {
     console.log(playerArr.length, flashOrder.length);
     //compare arrays 
-    
+    // If they don't match, game over.
     if (playerArr[playerArr.length -1] !== flashOrder[playerArr.length -1]) {
+        document.getElementById('round').innerHTML = 'GAME OVER!'
+        finallScore = score
+        hightScore.innerHTML = 'High Score: ' + finallScore
+        clearInterval(flashInt)
         console.log('game over')
     } else if(playerArr.length === turn){
         turn++
+        keepScore.innerHTML = 'Score: '+ score++;
         playerArr = [];
+        
+        document.getElementById('round').innerHTML = 'WATCH'
         let f = flashBoxes(flashOrder, turn, 1000);
         setTimeout(f, 1000);
         console.log('you won the round')
     }
 }
-// If they don't match, game over.
+
 
 
 function start() {
     // turn switches to one so you can check the amount of flashes
     turn = 1;
-    computerTurn = true;
+    
+    turnCounter.innerHTML = turn;
     // need to clear game and colors 
     for (let i = 0; i < 20; i++) {
         // need to generate a number between 1 & 4 and count up to 20
@@ -163,8 +177,5 @@ function start() {
 
 
 start();
-
-// how to edit att
-
 
 console.log(playerArr)

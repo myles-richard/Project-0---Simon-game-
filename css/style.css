@@ -11,6 +11,9 @@ header {
     font-weight: 400;
     text-align: center;
 }
+h2 {
+    font-size: 20px;
+}
 main {
     height: 600px;
     width: 600px;
@@ -18,7 +21,6 @@ main {
 ul {
     display: flex;
     list-style-type: none;
-    height: 2
 }
 #start {
     display: flex;
@@ -26,6 +28,8 @@ ul {
 
 div, p {
     display: flex;
+    font-size: 30px;
+    
 }
 
 button {
@@ -47,25 +51,30 @@ button {
     height: 50%;
     width: 50%;
     background-color: #C31B01;
+    border-top-left-radius: 40em;
+    border: 10px solid #000;
 }
-.democlass {
-    background-color: goldenrod;
-    opacity: 0;
-}
+
 #topright {
     height: 50%;
     width: 50%;
     background-color: #2CBD02;
+    border-top-right-radius: 40em;
+    border: 10px solid #000;
 }
 #bottomleft {
     height: 50%;
     width: 50%;
     background-color: #0458DA;
+    border-bottom-left-radius: 40em;
+    border: 10px solid #000;
 }
 #bottomright {
     height: 50%;
     width: 50%;
     background-color: #DEB51F;
+    border-bottom-right-radius: 40em;
+    border: 10px solid #000;
 }
 
 #inside-box {
@@ -76,4 +85,6 @@ button {
     left: 50%;
     margin-left: -25%;
     align-items: center;
+    border-radius: 50%;
+    border: 10px solid #000;
 }
