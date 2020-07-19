@@ -1,5 +1,6 @@
 # Project-0---Simon-game-
 <h1>The Simon Game</h1>
+<a href="https://myles-richard.github.io/Project-0---Simon-game-/">Check out my project!</a>
 <ul>
   <li>Simon is a one player memory skills game. You have to press start, watch the number of flashes, and then repeat the pattern by clicking on the correct tiles all they way up to 20 or as far as you can go. </li>
   <li>I made this game because it was a challenge for me. </li>

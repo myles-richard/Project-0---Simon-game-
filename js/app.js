@@ -2,13 +2,14 @@ console.log('hello there')
 
 let score = 0;
 //speed of game
-let speed = 1000;
+
 //keep track of turns 
 let turn;
 // need to have an empty array to fill with random numbers
 // need to have an array to match with computer to make sure i did the right combo
 let flashOrder = [];
 let playerArr = [];
+let speed = 1000;
 // need a value for my interval 
 let flashInt;
 // need to get all my html box's and give them variables
@@ -26,6 +27,11 @@ const hightScore = document.getElementById('highscore')
 let strtBtn = document.getElementById('strt');
 let slwBtn = document.getElementById('slow');
 let rstBtn = document.getElementById('reset')
+
+slwBtn.addEventListener('click', (event) => {
+    let f = flashBoxes(flashOrder, turn, (speed * .75));
+    f();
+})
 // start function
 strtBtn.addEventListener('click', (event) => {
     // i looping through flash order array
@@ -76,6 +82,7 @@ function flashBoxes(arr, roundLimiter, delayMillis) {
             }
             //go to next element in array
             arr[i++];
+            console.log(delayMillis)
             setTimeout(flasher, delayMillis);
         }
     }   
@@ -150,12 +157,14 @@ const checkForMatch = () => {
         keepScore.innerHTML = 'Score: '+ score;
         playerArr = [];
         document.getElementById('round').innerHTML = 'WATCH'
-        let f = flashBoxes(flashOrder, turn, 1000);
+        let f = flashBoxes(flashOrder, turn, speed);
         //run f again wait a second though
-        setTimeout(f, 1000);
+        setTimeout(f, speed);
        
     }
 }
+
+
 
 //Reset game
 function resetGame() {
