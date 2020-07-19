@@ -28,10 +28,6 @@ let strtBtn = document.getElementById('strt');
 let slwBtn = document.getElementById('slow');
 let rstBtn = document.getElementById('reset')
 
-slwBtn.addEventListener('click', (event) => {
-    let f = flashBoxes(flashOrder, turn, (speed * .75));
-    f();
-})
 // start function
 strtBtn.addEventListener('click', (event) => {
     // i looping through flash order array
