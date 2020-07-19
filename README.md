@@ -7,6 +7,9 @@
   <h2>Technologies</h2>
   <li>For this project I used HTML, CSS and JavaScript. The HTML layed out the framework of the page allowing me to label everything with ID and classes.</li>
   <li>I used CSS to make all my shapes and position the page. Flex box was used to position the items on the page and relatively positioning allowed me to stack things ontop of eachother.</li>
+
+  <img src="./Assets/simon.jpeg" />
+
   <h2>Installation Instructions</h2>
   <ol>
   <li>When the page loads, press start button</li>
